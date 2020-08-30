@@ -11,7 +11,7 @@ def studant_create(request, template='studants/studant_form.html'):
         form = StudantForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/Estudantes')
+            return redirect('/')
     else:
         form = StudantForm()
     return render(request, template, {'form': form})
@@ -26,7 +26,7 @@ def studant_update(request, studant_id, template='studants/studant_form.html'):
         form = StudantForm(request.POST,instance=aluno)
         if form.is_valid():
             form.save()
-            return redirect('/Estudantes')
+            return redirect('/')
     else:
         form = StudantForm(instance=aluno)
     return render(request, template, {'form': form})
@@ -35,6 +35,6 @@ def studant_delete(request, studant_id, template='studants/studant_delete.html')
     aluno = Studant.objects.get(id=studant_id)
     if request.method == 'POST':
         aluno.delete()
-        return redirect('/Estudantes')
+        return redirect('/')
     else:
         return render(request, template,{'aluno':aluno})
