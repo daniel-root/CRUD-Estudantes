@@ -24,6 +24,7 @@ def studant_update(request, studant_id, template='studants/studant_form.html'):
     aluno = Studant.objects.get(id=studant_id)
     if request.method == 'POST':
         form = StudantForm(request.POST,instance=aluno)
+        print(form)
         if form.is_valid():
             form.save()
             return redirect('/')

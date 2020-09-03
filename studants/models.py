@@ -23,7 +23,8 @@ class Studant(models.Model):
     birth_date = models.DateField('Data  de Nasimento')
     city = models.CharField('Cidade',max_length=50,default="Viçosa do Ceará")
     phone = models.CharField('Telefone',max_length=11)
-    cpf = models.CharField('CPF',max_length=11,validators=[validate_even])
+    cpf = models.CharField('CPF',max_length=11)
+    #cpf = models.CharField('CPF',max_length=11,validators=[validate_even])
     course = models.CharField('Curso',max_length=50, choices=COURSES)
     email = models.EmailField('E-mail')
     
