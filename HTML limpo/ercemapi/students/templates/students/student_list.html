@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Estudantes</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{aluno.pk}}</td>
+                    <td>{{aluno.name}}</td>
+                    <td>{{aluno.course}}</td>
+                    <td>
+                        <a href="{% url "student_read" aluno.pk %}">Ver</a>
+                        <a href="{% url "student_update" aluno.pk %}">Editar</a>
+                        <a href="{% url "student_delete" aluno.pk %}">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Sem resultados<td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url "student_create" %}">Novo</a>
+    </body>
+</html>

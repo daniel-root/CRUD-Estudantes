@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Estudante Informações</title>
+    </head>
+    <body>
+    {{aluno.name}}
+    {{aluno.birth_date}}
+    {{aluno.city}}
+    {{aluno.email}}
+    {{aluno.cpf}}
+    {{aluno.phone}}
+    {{aluno.course}}
+    <a href="{% url "student_list" %}">Voltar</a>
+    </body>
+</html>

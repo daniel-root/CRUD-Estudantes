@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>Formulário Estudante</title>
+    </head>
+    <body>
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Salvar</button>
+    <a href="{% url "student_list" %}">Cancelar</a>
+    </form>
+    </body>
+</html>
