@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+    	<!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title>Formulário Estudante</title>
+    </head>
+    <body>
+    	<div class="container pt-4">
+	    <form method="post">
+	    	<fieldset>
+	    		<legend>Cadastro de estudante</legend>
+	    	</fieldset>
+	    {% csrf_token %}
+	    <!--{{ form }}-->
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="nome">Nome:</label>
+	    		<div class="col-lg-10 col-md-10 col-sm-12">
+	    			<input class="form-control" type="text" name="nome" id="id_nome">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="data">Data de nascimento:</label>
+	    		<div class="col-lg-3 col-md-3 col-sm-12">
+	    			<input class="form-control" type="date" name="data" id="id_data">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="cidade">Cidade:</label>
+	    		<div class="col-lg-10 col-md-10 col-sm-12">
+	    			<input class="form-control" type="text" name="cidade" id="id_cidade">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="email">Email:</label>
+	    		<div class="col-lg-10 col-md-10 col-sm-12">
+	    			<input class="form-control" type="email" name="email" id="id_email">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="cpf">CPF:</label>
+	    		<div class="col-lg-4 col-md-4 col-sm-12">
+	    			<input class="form-control" type="text" name="cpf" id="id_cpf">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="telefone">Telefone:</label>
+	    		<div class="col-lg-4 col-md-4 col-sm-12">
+	    			<input class="form-control" type="text" name="telefone" id="id_telefone">
+	    		</div>
+	    	</div>
+
+	    	<div class="form-group row">
+	    		<label class="col-lg-2 col-md-2 col-sm-12 col-form-label" for="curso">Curso:</label>
+	    		<div class="col-lg-4 col-md-4 col-sm-12">
+	    			<select class="form-control">
+	    				<option>--------</option>
+	    			</select>
+	    		</div>
+	    	</div>
+	    	<div class="text-right">
+	    <button type="submit" class="btn btn-primary">Salvar</button>
+	    <a href="{% url "student_list" %}" class="btn btn-success">Cancelar</a>
+	    	</div>
+	    </form>
+	    </div>
+    </body>
+</html>

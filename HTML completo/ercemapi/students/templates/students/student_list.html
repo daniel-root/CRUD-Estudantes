@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title>Estudantes</title>
+    </head>
+    <body>
+        <div class="container">
+        	<div class="pt-4">
+        		<legend>Listagem de estudantes</legend>
+        	</div>
+        <table class="table">
+            <thead>
+                <tr class="d-flex">
+                    <th class="col-lg-2 col-md-2 col-sm-2">ID</th>
+                    <th class="col-lg-4 col-md-4 col-sm-4">Nome</th>
+                    <th class="col-lg-3 col-md-3 col-sm-3">Curso</th>
+                    <th class="col-lg-3 col-md-3 col-sm-3">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for aluno in alunos %}
+                <tr class="d-flex">
+                    <td class="col-lg-2 col-md-2 col-sm-2">{{aluno.pk}}</td>
+                    <td  class="col-lg-4 col-md-4 col-sm-4">{{aluno.name}}</td>
+                    <td class="col-lg-3 col-md-3 col-sm-3">{{aluno.course}}</td>
+                    <td class="col-lg-3 col-md-3 col-sm-3">
+                        <a href="{% url "student_read" aluno.pk %}" class="btn btn-primary" data-toggle="modal" data-target="#dadosestudante">Ver</a>
+                        <!-- Modal visualizar dados -->
+						<div class="modal fade" id="dadosestudante" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">Dados do estudante</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+								<p>Nome: {{aluno.name}}<br>
+							    Data de nascimento:{{aluno.birth_date}}<br>
+							    Cidade:{{aluno.city}}<br>
+							    Email:{{aluno.email}}<br>
+							    CPF:{{aluno.cpf}}<br>
+							    Telefone:{{aluno.phone}}<br>
+							    Curso:{{aluno.course}}</p>
+						      </div>
+						      <div class="modal-footer">
+						        <a href="{% url "student_list" %}" class="btn btn-success">Voltar</a>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+                        <a href="{% url "student_update" aluno.pk %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url "student_delete" aluno.pk %}"class="btn btn-danger" data-toggle="modal" data-target="#excluirestudante">Excluir</a>
+                            <!-- Modal excluir cadastro -->
+							<div class="modal fade" id="excluirestudante" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Dados do estudante</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+									<p>Você tem certeza que deseja ecluir: {{aluno.name}} ?</p>
+							      </div>
+							      <div class="modal-footer">
+							        <a href="{% url "student_list" %}" class="btn btn-success">Cancelar</a>
+							        <button type="submit" class="btn btn-primary">Confirmar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Sem resultados<td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+        	<a href="{% url "student_create" %}" class="btn btn-success">Novo</a>
+        </div>
+    </div>
+    
+
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
